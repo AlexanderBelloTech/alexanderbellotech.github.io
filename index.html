@@ -28,19 +28,21 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
       background: radial-gradient(circle at top, #151522 0, #050509 55%);
+      font-size: 18px;
+      line-height: 1.6;
       color: var(--text);
       -webkit-font-smoothing: antialiased;
     }
-
+    
     a {
       color: inherit;
       text-decoration: none;
     }
 
     .page {
-      max-width: 1040px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 32px 20px 64px;
+      padding: 40px 24px 72px;
     }
 
     header {
@@ -105,17 +107,17 @@
     }
 
     .hero-title {
-      font-size: clamp(30px, 4vw, 36px);
+      font-size: clamp(36px, 4.5vw, 44px);
       font-weight: 700;
       letter-spacing: -0.03em;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .hero-subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text-soft);
-      margin-bottom: 22px;
-      max-width: 560px;
+      margin-bottom: 24px;
+      max-width: 620px;
       line-height: 1.5;
     }
 
@@ -133,8 +135,8 @@
 
     .btn {
       border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 12px 22px;
+      font-size: 15px;
       border: 1px solid transparent;
       display: inline-flex;
       align-items: center;
@@ -167,14 +169,14 @@
       background: rgba(10,132,255,0.08);
       color: var(--text);
     }
-
+    
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-soft);
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .hero-meta span {
@@ -189,20 +191,20 @@
       border-radius: 50%;
       background: var(--text-soft);
     }
-
+    
     .section-title {
-      font-size: 13px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--text-soft);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .list {
       list-style: none;
       display: grid;
       gap: 8px;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-soft);
     }
 
@@ -248,13 +250,13 @@
     }
 
     .project-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       margin-bottom: 4px;
     }
 
     .project-meta {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-soft);
       display: flex;
       flex-wrap: wrap;
@@ -271,6 +273,21 @@
     .side-card {
       display: grid;
       gap: 18px;
+    }
+      
+    .tags {
+      font-size: 13px;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tags span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
     }
 
     footer {
@@ -292,7 +309,7 @@
       <div class="brand">ALEXANDERBELLOTECH</div>
       <div class="pill">
         <span class="pill-dot"></span>
-        <span>Available for remote iOS roles</span>
+        <span>Building clean and modular iOS apps</span>
       </div>
     </header>
 
