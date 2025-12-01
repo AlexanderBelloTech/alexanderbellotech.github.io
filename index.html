@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alexander Bello · iOS Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Alexander Bello · iOS Developer focused on clean architecture, modular apps and high-quality iOS experiences." />
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-card: #0b0b10;
+      --accent: #0a84ff;
+      --accent-soft: rgba(10,132,255,0.1);
+      --text: #f5f5f7;
+      --text-soft: #9fa3af;
+      --border: #1c1c23;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #151522 0, #050509 55%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #30d158;
+      box-shadow: 0 0 10px rgba(48,209,88,0.7);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.65));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 22px 22px 24px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--text-soft);
+      margin-bottom: 22px;
+      max-width: 560px;
+      line-height: 1.5;
+    }
+
+    .hero-highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0a84ff, #4f9eff);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 14px 30px rgba(10,132,255,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(10,132,255,0.65);
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      background: rgba(255,255,255,0.01);
+      color: var(--text-soft);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-soft);
+      background: rgba(10,132,255,0.08);
+      color: var(--text);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bullet {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-soft);
+    }
+
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .list li span {
+      color: var(--text);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .projects {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .project-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      background: radial-gradient(circle at top left, rgba(10,132,255,0.12), transparent);
+      transition: border-color 0.18s ease-out, transform 0.18s ease-out, box-shadow 0.18s ease-out;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.7);
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-meta span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .side-card {
+      display: grid;
+      gap: 18px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">ALEXANDERBELLOTECH</div>
+      <div class="pill">
+        <span class="pill-dot"></span>
+        <span>Available for remote iOS roles</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT: HERO + PROJECTS -->
+      <section class="card">
+        <h1 class="hero-title">Alexander Bello</h1>
+        <p class="hero-subtitle">
+          <span class="hero-highlight">iOS Developer</span> focused on clean architecture, modular apps and high-quality user experiences for Apple platforms.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/AlexanderBelloTech" target="_blank" rel="noreferrer">
+            View GitHub Profile →
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/alexanderbellotech" target="_blank" rel="noreferrer">
+            Connect on LinkedIn
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span><span class="bullet"></span> São Paulo, Brazil · Remote-friendly</span>
+          <span><span class="bullet"></span> Writing at Medium: @AlexanderBelloTech</span>
+        </div>
+
+        <div class="projects">
+          <div class="section-title">Selected Projects</div>
+
+          <!-- PROJECT 1 -->
+          <a class="project-card" href="https://github.com/AlexanderBelloTech/YanDevIOS" target="_blank" rel="noreferrer">
+            <div class="project-title">YanDev iOS Playground</div>
+            <div class="project-meta">
+              <span>Swift</span>
+              <span>UIKit &amp; SwiftUI</span>
+              <span>Architecture &amp; experiments</span>
+            </div>
+          </a>
+
+          <!-- PROJECT 2 -->
+          <a class="project-card" href="https://apps.apple.com/br/app/oab-estudo-e-simulado/id6472617584" target="_blank" rel="noreferrer">
+            <div class="project-title">Passei OAB · iOS App</div>
+            <div class="project-meta">
+              <span>App Store</span>
+              <span>Swift • UIKit</span>
+              <span>Education</span>
+            </div>
+          </a>
+
+          <!-- PROJECT 3 – você pode trocar o link/repo -->
+          <a class="project-card" href="https://github.com/AlexanderBelloTech" target="_blank" rel="noreferrer">
+            <div class="project-title">More iOS projects on GitHub</div>
+            <div class="project-meta">
+              <span>Open Source</span>
+              <span>Swift</span>
+              <span>Experiments &amp; learning</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- RIGHT: STACK + ABOUT + CONTACT -->
+      <section class="side-card">
+        <div class="card">
+          <div class="section-title">Tech stack</div>
+          <ul class="list">
+            <li><span>Languages</span> — Swift, Objective-C</li>
+            <li><span>UI &amp; Frameworks</span> — UIKit, SwiftUI, Combine</li>
+            <li><span>Architecture</span> — MVVM-C, Clean Architecture, Modular Design</li>
+            <li><span>Engineering</span> — Unit tests, Analytics, CI/CD, Programmatic UI</li>
+          </ul>
+          <div class="badge-row">
+            <div class="badge">iOS Development</div>
+            <div class="badge">Mobile Engineering</div>
+            <div class="badge">Apple Platforms</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">About</div>
+          <ul class="list">
+            <li><span>BSc. Information Systems</span></li>
+            <li><span>Founding Member</span> — Irmandade Swift Community</li>
+            <li><span>Writer</span> — iOS development articles on Medium</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Contact</div>
+          <ul class="list">
+            <li><span>Email</span> — <a href="mailto:alexanderbellotech@outlook.com">alexanderbellotech@outlook.com</a></li>
+            <li><span>GitHub</span> — <a href="https://github.com/AlexanderBelloTech" target="_blank" rel="noreferrer">@AlexanderBelloTech</a></li>
+            <li><span>LinkedIn</span> — <a href="https://www.linkedin.com/in/alexanderbellotech" target="_blank" rel="noreferrer">/in/alexanderbellotech</a></li>
+            <li><span>Medium</span> — <a href="https://medium.com/@AlexanderBelloTech" target="_blank" rel="noreferrer">@AlexanderBelloTech</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Built with ❤️ using just HTML &amp; CSS · Designed for GitHub Pages · <a href="https://github.com/AlexanderBelloTech" target="_blank" rel="noreferrer">AlexanderBelloTech</a>
+    </footer>
+  </div>
+</body>
+</html>
